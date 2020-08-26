@@ -1,0 +1,46 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="dicsysabmModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Credenciales">
+    <Key>
+      <PropertyRef Name="IDEmpleado" />
+    </Key>
+    <Property Name="IDEmpleado" Type="int" Nullable="false" />
+    <Property Name="Usuario" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Password" Type="varchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Empleado">
+    <Key>
+      <PropertyRef Name="IDEmpleado" />
+    </Key>
+    <Property Name="IDEmpleado" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Nombre" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Apellido" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="DNI" Type="int" Nullable="false" />
+    <Property Name="Email" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Celular" Type="int" Nullable="false" />
+    <Property Name="Legajo" Type="int" Nullable="false" />
+    <Property Name="Empresa" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Estado" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Cargo" Type="varchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <Association Name="FK__Credencia__IDEmp__37A5467C">
+    <End Role="Empleado" Type="Self.Empleado" Multiplicity="1" />
+    <End Role="Credenciales" Type="Self.Credenciales" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="Empleado">
+        <PropertyRef Name="IDEmpleado" />
+      </Principal>
+      <Dependent Role="Credenciales">
+        <PropertyRef Name="IDEmpleado" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="dicsysabmModelStoreContainer">
+    <EntitySet Name="Credenciales" EntityType="Self.Credenciales" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Empleado" EntityType="Self.Empleado" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK__Credencia__IDEmp__37A5467C" Association="Self.FK__Credencia__IDEmp__37A5467C">
+      <End Role="Empleado" EntitySet="Empleado" />
+      <End Role="Credenciales" EntitySet="Credenciales" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

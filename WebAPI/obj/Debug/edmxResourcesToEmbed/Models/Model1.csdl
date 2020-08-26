@@ -1,0 +1,48 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="dicsysabmModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Credenciales">
+    <Key>
+      <PropertyRef Name="IDEmpleado" />
+    </Key>
+    <Property Name="IDEmpleado" Type="Int32" Nullable="false" />
+    <Property Name="Usuario" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="Empleado" Relationship="Self.FK__Credencia__IDEmp__37A5467C" FromRole="Credenciales" ToRole="Empleado" />
+  </EntityType>
+  <EntityType Name="Empleado">
+    <Key>
+      <PropertyRef Name="IDEmpleado" />
+    </Key>
+    <Property Name="IDEmpleado" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Apellido" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="DNI" Type="Int32" Nullable="false" />
+    <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Celular" Type="Int32" Nullable="false" />
+    <Property Name="Legajo" Type="Int32" Nullable="false" />
+    <Property Name="Empresa" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Estado" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Cargo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="Credenciales" Relationship="Self.FK__Credencia__IDEmp__37A5467C" FromRole="Empleado" ToRole="Credenciales" />
+  </EntityType>
+  <Association Name="FK__Credencia__IDEmp__37A5467C">
+    <End Role="Empleado" Type="Self.Empleado" Multiplicity="1" />
+    <End Role="Credenciales" Type="Self.Credenciales" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="Empleado">
+        <PropertyRef Name="IDEmpleado" />
+      </Principal>
+      <Dependent Role="Credenciales">
+        <PropertyRef Name="IDEmpleado" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="DBModel" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Credenciales" EntityType="Self.Credenciales" />
+    <EntitySet Name="Empleado" EntityType="Self.Empleado" />
+    <AssociationSet Name="FK__Credencia__IDEmp__37A5467C" Association="Self.FK__Credencia__IDEmp__37A5467C">
+      <End Role="Empleado" EntitySet="Empleado" />
+      <End Role="Credenciales" EntitySet="Credenciales" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>
