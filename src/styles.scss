@@ -1,0 +1,29 @@
+.form-group>input{
+	font-weight: bolder;
+}
+.form-group>label{
+	font-weight: lighter;
+}
+
+button[type="submit"]{
+	background-color: #0004f0;
+	color: rgb(255, 255, 255);
+}
+.jumbotron{
+	background-color: rgb(255, 255, 255);
+	padding-top: 32px;
+}
+table tr:hover{
+	cursor: pointer;
+}
+
+input.ng-dirty.ng-invalid{
+    border-color:  #dc3545;
+}
+div.validation-error{
+	width: 100%;
+	margin-top: .25rem;
+	font-size: 80%;
+	color: #dc3545;
+}
+

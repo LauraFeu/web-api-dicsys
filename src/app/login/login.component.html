@@ -1,0 +1,25 @@
+<h1 class="text-center"> ¡Bienvenido a mi WebAPI! </h1>
+
+<form #form="ngForm" autocomplete="off">
+
+  <div class="form-group">
+    <label for="Usuario">Usuario</label>
+    <input name="Usuario" #Usuario="ngModel" [(ngModel)]="service.formData.Usuario" class="form-control" id="Usuario" aria-describedby="emailHelp" placeholder="Escribe aqui tu usuario" required>
+    <div class="validation-error" *ngIf="Usuario.invalid && Usuario.touched" >Este Campo es obligatorio</div>
+    <small id="emailHelp" class="form-text text-muted">¡Cuidamos tus datos!</small>
+  </div>
+  <div class="form-group">
+    <label for="exampleInputPassword1">Password</label>
+    <input type="password" #Password="ngModel" [(ngModel)]="service.formData.Password" class="form-control" id="Password" placeholder="Escribe aqui tu password" required>
+    <div class="validation-error" *ngIf="Password.invalid && Password.touched" >Este Campo es obligatorio</div>
+  </div>
+<br>
+    <div class="class form-group">      
+      <button onclick="location.href='./empleado-list'" class="btn btn-primary">Login</button>
+      &nbsp;
+      <button onclick="location.href='./home'" class="btn btn-secondary">Registrate</button>
+    </div>
+    <br>
+   
+  </form>
+

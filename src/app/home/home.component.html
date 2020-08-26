@@ -1,0 +1,21 @@
+<br>
+<style> div {background-image: url('dicsys.jpg');} </style>
+<h1 class="text-center"> Bienvenido a Laura Feu .INC</h1>
+<h2 class="text-center"> ¡Regístrate! </h2>
+<br>
+     <form #form="ngForm" (submit)="onSubmit(form)" autocomplete="off">
+
+      <div class="form-row">
+        <div class="form-group col-md-6">
+          <label for="Usuario">Usuario</label>
+          <input name="Usuario" #Usuario="ngModel" [(ngModel)]="service.formData.Usuario" class="form-control">
+        </div>
+        <div class="form-group col-md-6">
+          <label for="Password">Password</label>
+          <input type="password" name="Password" #Password="ngModel" [(ngModel)]="service.formData.Password" class="form-control">
+        </div>
+      </div>
+        <div class="class form-group">      
+        <button  type="submit" [disabled]="form.invalid" class="btn btn-primary btn-lg btn-block">Regístrate</button>
+        </div>
+     </form>
